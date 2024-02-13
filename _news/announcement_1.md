@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-I got the Best Student Paper Award at the [ICASSP 2023](https://2023.ieeeicassp.org/)
+Our rigorous uncertainty quantification for MRI got the Best Student Paper Award at the [ICASSP 2023](https://2023.ieeeicassp.org/)
