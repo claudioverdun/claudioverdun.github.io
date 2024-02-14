@@ -1,0 +1,8 @@
+---
+layout: post
+date: 2023-24-01 15:59:00-0400
+inline: true
+related_posts: false
+---
+
+I was chosen to represent the Technical University of Munich as one of the eight invited speakers in a science slam at the [Founding ceremony of the TUM School of Computation, Information and Technology](https://www.cit.tum.de/en/cit/school/news-events/founding-ceremony/#c1442)
