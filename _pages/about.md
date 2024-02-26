@@ -9,7 +9,7 @@ profile:
   image: claudio.jpg
   image_circular: true # crops the image to make it circular
   more_info: >
-    <p>Harvard University</p>
+    <p>150 Western Ave, Allston, MA 02134</p>
 
 news: true  # includes a list of news items
 latest_posts: true  # includes a list of the newest posts
