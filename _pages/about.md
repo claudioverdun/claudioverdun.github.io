@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='https://seas.harvard.edu/'>Harvard's John A. Paulson School of Engineering and Applied Sciences</a>.
+subtitle: <a href='https://seas.harvard.edu/'>Harvard University - John A. Paulson School of Engineering and Applied Sciences</a>.
 
 profile:
   align: right
@@ -23,7 +23,7 @@ I am a mathematician working with AI and machine learning at [Harvard's School o
 
 I leverage optimization, statistics, and signal processing techniques for better artificial intelligence theory and practice. I also develop provably fast and scalable methods for machine learning models and uncertainty quantification techniques for high-dimensional problems with large data. I am passionate about applying such techniques to medical imaging, such as MRI, and applications of AI to education. 
 
-I had the privilege of completing my Ph.D. in mathematics under the guidance of [Felix Krahmer](https://www.professoren.tum.de/en/krahmer-felix/) within the [Optimization and Data Analysis group](https://www.math.cit.tum.de/en/math/research/groups/data-science/), while concurrently contributing to the Information Theory group under the leadership of [Holger Boche](https://www.professoren.tum.de/en/boche-holger/) at the [Technical University of Munich](www.tum.de).
+I had the privilege of completing my Ph.D. in mathematics under the guidance of [Felix Krahmer](https://www.professoren.tum.de/en/krahmer-felix/) within the [Optimization and Data Analysis group](https://www.math.cit.tum.de/en/math/research/groups/data-science/), while concurrently affiliated to the Information Theory group under the leadership of [Holger Boche](https://www.professoren.tum.de/en/boche-holger/) at the [Technical University of Munich](www.tum.de).
 
 <!-- Outside the university, you can find me traveling to some off-the-beaten-path places or reading about international politics.--> 
 
