@@ -12,14 +12,14 @@ profile:
     <p>150 Western Ave, Allston, MA 02134</p>
 
 news: true  # includes a list of news items
-latest_posts: true  # includes a list of the newest posts
+latest_posts: false  # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
 Hi! I am Claudio. Thanks for visiting my website and for your time. 
 
-I am a mathematician working with AI and machine learning at [Harvard's School of Engineering and Applied Sciences](https://seas.harvard.edu/) mentored by [Flavio Calmon](https://people.seas.harvard.edu/~flavio/). I am broadly interested in fairness, privacy, and mechanistic interpretability of large AI models. 
+I am a mathematician working with AI and machine learning at [Harvard's School of Engineering and Applied Sciences](https://seas.harvard.edu/) mentored by [Flavio Calmon](https://people.seas.harvard.edu/~flavio/). I am broadly interested in the fairness, arbitrariness, and mechanistic interpretability aspects of large AI models. 
 
 I leverage optimization, statistics, and signal processing techniques for better artificial intelligence theory and practice. I also develop provably fast and scalable methods for machine learning models and uncertainty quantification techniques for high-dimensional problems with large data. I am passionate about applying such techniques to medical imaging, such as MRI, and applications of AI to education. 
 
