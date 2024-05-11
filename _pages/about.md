@@ -6,7 +6,7 @@ subtitle: <a href='https://seas.harvard.edu/'>Harvard's John A. Paulson School o
 
 profile:
   align: right
-  image: claudio_beamer.png
+  image: claudio2.jpg
   image_circular: true # crops the image to make it circular
   more_info: >
     <p>150 Western Ave, Allston, MA 02134</p>
