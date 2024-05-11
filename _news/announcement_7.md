@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our policy brief about AI, arbitrariness and algorithmic leviathans got accepted at the [G20 Summit 2024](https://www.t20brasil.org/en).
+Our policy brief about AI, arbitrariness, and algorithmic leviathans got accepted at the [2024 G20 Summit](https://www.t20brasil.org/en).
