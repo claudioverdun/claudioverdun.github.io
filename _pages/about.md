@@ -19,7 +19,7 @@ social: true  # includes social icons at the bottom of the page
 
 Hi! I am Claudio. Thanks for visiting my website and for your time. 
 
-I am a mathematician working with AI and machine learning at [Harvard's School of Engineering and Applied Sciences](https://seas.harvard.edu/) mentored by [Flavio Calmon](https://people.seas.harvard.edu/~flavio/). Now, I am working with different aspects of trustworthy machine learning, such as fairness and arbitrariness, and also with mechanistic interpretability techniques from large generative models. 
+I am a mathematician working with AI and machine learning at [Harvard's School of Engineering and Applied Sciences](https://seas.harvard.edu/) mentored by [Flavio Calmon](https://people.seas.harvard.edu/~flavio/). Currently, I am working with different aspects of trustworthy machine learning, such as fairness and arbitrariness, and with mechanistic interpretability techniques for large generative models. 
 
 Over the last few years, I have leveraged optimization, statistics, and signal processing techniques for better artificial intelligence theory and practice. I also develop provably fast and scalable methods for machine learning models and uncertainty quantification techniques for high-dimensional problems with large data. I am also passionate about applying such techniques to medical imaging, such as MRI, and the use of AI for education. 
 
