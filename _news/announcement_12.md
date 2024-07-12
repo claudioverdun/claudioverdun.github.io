@@ -5,5 +5,5 @@ inline: true
 related_posts: false
 ---
 
-Our paper on multi-group proportional representation is out on [arXiv](https://eccv2024.ecva.net/).
+Our paper on multi-group proportional representation is out on [arXiv](https://arxiv.org/abs/2407.08571v1).
  
