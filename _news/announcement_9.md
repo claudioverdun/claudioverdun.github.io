@@ -5,5 +5,5 @@ inline: true
 related_posts: false
 ---
 
-Our paper about reweighted sampling strategies for improving uncertainty quantification in Fourier imaging was accepted at the [Cosera 2024](https://cosera2024.com/).
+[Our paper](https://arxiv.org/abs/2407.13575) about reweighted sampling strategies for improving uncertainty quantification in Fourier imaging was accepted at the [Cosera 2024](https://cosera2024.com/).
  
