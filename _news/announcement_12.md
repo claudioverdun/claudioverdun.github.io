@@ -5,5 +5,5 @@ inline: true
 related_posts: false
 ---
 
-Our [paper](https://arxiv.org/abs/2407.08571v1) on multi-group proportional representation got accepted at [NeurIPS 2024](https://neurips.cc/Conferences/2024).
+Our [paper](https://arxiv.org/abs/2407.08571v1) on multi-group proportional representation has been accepted at the [NeurIPS 2024](https://neurips.cc/Conferences/2024).
  
