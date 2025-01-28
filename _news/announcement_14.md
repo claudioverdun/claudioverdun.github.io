@@ -5,5 +5,5 @@ inline: true
 related_posts: false
 ---
 
-Our paper on the implicit bias of gradient descent, reparametrization, and NNLS got accepted at the [AISTATS](https://virtual.aistats.org/).
+Our paper on the implicit bias of gradient descent, reparametrization, and NNLS got accepted at the [AISTATS 2025](https://virtual.aistats.org/).
  
