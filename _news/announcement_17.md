@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper about discretion in AI alignment is finally out!
+[Our paper about discretion in AI alignment](https://arxiv.org/abs/2502.10441) is finally out!
