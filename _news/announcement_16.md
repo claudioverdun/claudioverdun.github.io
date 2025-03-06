@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper about the precise characterization of the perception-distortion limitations of LLM watermarking and optimal couplings is finally submitted!
+Our paper about the precise characterization of the perception-distortion limitations of LLM watermarking and optimal couplings got accepted at the [ICLR 2025 Workshop on GenAI Watermarking](https://sites.google.com/view/genai-watermark/home)! More news about it coming soon. 
