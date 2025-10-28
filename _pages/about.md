@@ -19,7 +19,9 @@ social: true  # includes social icons at the bottom of the page
 
 Hi! I am Claudio. Thanks for visiting my website and for your time. 
 
-I am a mathematician working with AI and machine learning at [Harvard's School of Engineering and Applied Sciences](https://seas.harvard.edu/) under the mentorship of [Flavio Calmon](https://people.seas.harvard.edu/~flavio/). My research focuses on building the mathematical foundations of trustworthy AI, developing rigorous frameworks, algorithms, and theoretical guarantees for deploying AI systems safely and equitably. I harness tools from optimization, statistics, information theory, and signal processing to advance both theory and practice. I am currently most excited about:
+I am a mathematician working with AI and machine learning at [Harvard's School of Engineering and Applied Sciences](https://seas.harvard.edu/) under the mentorship of [Flavio Calmon](https://people.seas.harvard.edu/~flavio/). My research focuses on building the mathematical foundations of trustworthy AI, developing rigorous frameworks, algorithms, and theoretical guarantees for deploying AI systems safely and equitably. I harness tools from optimization, statistics, information theory, and signal processing to advance both theory and practice.  I am currently most excited about inference-time alignment, interpretability, fairness and the science of generative AI evaluations, and the economic implications of AI deployment.
+
+**Some snippets of my research:**
 
 **Inference-time alignment and post-training.** I develop principled methods for aligning AI systems at inference time, without additional training. This includes [introducing Soft-Best-of-n sampling](https://arxiv.org/pdf/2506.19248) and [introducing Best-of-Poisson and establishing theoretical frameworks for reward hacking in inference-time methods](https://arxiv.org/pdf/2506.19248).
 
