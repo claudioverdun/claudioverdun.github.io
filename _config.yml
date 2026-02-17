@@ -6,7 +6,7 @@ title: blank # the website title (if blank, full name will be used instead)
 first_name: Claudio
 middle_name:
 last_name: Mayrink Verdun
-email: claudioverdun@seas.harvard.edu
+email: claudioverdun@g.harvard.edu
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   Welcome to Claudio's website!
 footer_text: >
