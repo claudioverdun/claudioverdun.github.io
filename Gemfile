@@ -25,3 +25,12 @@ group :other_plugins do
     gem 'feedjira'
     gem 'httparty'
 end
+# Standard library gems removed from Ruby 3.5+ defaults — required by older
+# plugins (jekyll-twitter-plugin needs ostruct; others may need these too).
+gem 'ostruct'
+gem 'logger'
+gem 'csv'
+gem 'base64'
+gem 'bigdecimal'
+gem 'mutex_m'
+gem 'observer'

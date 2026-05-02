@@ -9,4 +9,7 @@ _site
 Gemfile.lock
 vendor
 .superpowers/
+.playwright-mcp/
+redesign-baseline.png
+/tmp/redesign-*.png
 
