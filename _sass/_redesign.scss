@@ -1,0 +1,463 @@
+/*******************************************************************************
+ * Redesign — B2 Steel & Ice
+ * Layered on top of al-folio. All tokens read from CSS custom properties
+ * defined in _themes.scss so light/dark switching is just a `data-theme` flip.
+ ******************************************************************************/
+
+/* ---------- Typography ---------- */
+
+body {
+  font-family: $serif-font-stack;
+  font-size: 16px;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.redesign-uppercase,
+.section-label,
+.role-label,
+.year-head,
+.badge {
+  font-family: $sans-font-stack;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* ---------- Layout container ---------- */
+
+.r-container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Top bar (navbar) ---------- */
+
+#navbar.navbar {
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  font-family: $sans-font-stack;
+
+  .navbar-brand {
+    font-family: $serif-font-stack;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .nav-link {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+  }
+  .nav-link:hover,
+  .nav-item.active .nav-link {
+    color: var(--accent);
+  }
+  #light-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text);
+    padding: 0 0 0 14px;
+    i { color: var(--accent); font-size: 14px; }
+  }
+}
+
+/* ---------- Home: hero ---------- */
+
+.r-home .r-hero {
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  gap: 24px;
+  align-items: center;
+  padding: 36px 0 28px;
+}
+.r-home .r-hero .role-label {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+}
+.r-home .r-hero .tagline {
+  font-family: $serif-font-stack;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.3;
+  margin-top: 8px;
+  color: var(--text);
+}
+.r-home .r-hero .avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+}
+
+/* ---------- Home: bio ---------- */
+
+.r-home .r-bio {
+  padding: 14px 0 28px;
+  border-top: 1px solid var(--rule);
+}
+.r-home .r-bio p {
+  font-family: $serif-font-stack;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.r-home .r-bio a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.r-home .r-bio a:hover { border-bottom-color: var(--accent); }
+
+/* ---------- Section header ---------- */
+
+.r-section {
+  margin: 26px 0 14px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.r-section .section-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.r-section a.see-all {
+  font-family: $sans-font-stack;
+  font-size: 11px;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+.r-section a.see-all:hover { text-decoration: underline; }
+
+/* ---------- News list ---------- */
+
+.r-news ul { list-style: none; padding: 0; margin: 0; }
+.r-news li {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: $sans-font-stack;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.r-news .date {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+}
+.r-news .msg { color: var(--text); }
+.r-news .msg a { color: var(--accent); text-decoration: none; }
+.r-news .msg a:hover { text-decoration: underline; }
+
+/* ---------- Paper card (used on home selected + publications) ---------- */
+
+.paper {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin: 8px 0;
+  transition: border-color 0.15s ease;
+}
+.paper:hover { border-color: var(--card-border-hover); }
+.paper .paper-head {
+  cursor: pointer;
+  user-select: none;
+}
+.paper .paper-title {
+  font-family: $serif-font-stack;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.45;
+  margin: 0;
+  color: var(--text);
+}
+.paper .paper-title .star {
+  color: var(--gold);
+  margin-right: 4px;
+  font-size: 12px;
+}
+.paper .paper-title .badge {
+  display: inline-block;
+  font-family: $sans-font-stack;
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: 2px;
+  margin-left: 6px;
+  vertical-align: 1px;
+}
+.paper .paper-title .badge.b-blue {
+  background: rgba(127, 163, 194, 0.14);
+  color: var(--accent);
+  border: 1px solid rgba(127, 163, 194, 0.30);
+}
+.paper .paper-title .badge.b-gold {
+  background: rgba(201, 182, 125, 0.14);
+  color: var(--gold);
+  border: 1px solid rgba(201, 182, 125, 0.32);
+}
+.paper .paper-title .badge.b-mono {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+}
+.paper .meta {
+  font-family: $sans-font-stack;
+  font-size: 10.5px;
+  color: var(--muted);
+  margin: 4px 0 0;
+  line-height: 1.5;
+}
+.paper .meta em { font-style: normal; color: var(--text); font-weight: 600; }
+
+/* Collapsible body — used on publications page only */
+.paper .paper-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.paper.open .paper-body { max-height: 320px; }
+.paper .paper-body-inner {
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid var(--rule);
+}
+.paper .blurb {
+  font-family: $serif-font-stack;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+.paper .links a {
+  font-family: $sans-font-stack;
+  font-size: 11px;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  padding: 3px 8px;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+}
+.paper .links a:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Always-open variant (used on home page) */
+.paper.always-open .paper-body { max-height: 320px; }
+.paper.always-open .paper-head { cursor: default; }
+
+/* ---------- Publications page: year sections ---------- */
+
+.r-pub-year { margin-top: 28px; }
+.r-pub-year .year-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+  user-select: none;
+}
+.r-pub-year .year-head .count {
+  letter-spacing: 0.04em;
+}
+.r-pub-year .year-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.r-pub-year.open .year-body {
+  max-height: 8000px; /* large enough for any reasonable year of papers */
+}
+.r-pub-year .year-head::after {
+  content: '+';
+  color: var(--accent);
+  font-family: $sans-font-stack;
+  margin-left: 8px;
+}
+.r-pub-year.open .year-head::after { content: '−'; }
+
+/* ---------- Info for AI systems ---------- */
+
+.r-ai-info {
+  border: 1px dashed var(--rule);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-top: 14px;
+  font-family: $sans-font-stack;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  background: var(--bg);
+  color: var(--muted);
+  border-top: 1px solid var(--rule);
+  font-family: $sans-font-stack;
+  font-size: 12px;
+}
+footer .r-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  max-width: 780px;
+  margin: 0 auto;
+}
+footer .r-footer-icons { display: flex; gap: 14px; align-items: center; }
+footer .r-footer-icons a { color: var(--muted); text-decoration: none; font-size: 14px; }
+footer .r-footer-icons a:hover { color: var(--accent); }
+
+/* ---------- Email reveal ---------- */
+
+.email-reveal {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+  font-family: $mono-font-stack;
+  color: var(--text);
+  font-size: 13px;
+}
+.email-reveal:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }
+.email-reveal .email-icon { color: var(--accent); font-size: 14px; }
+.email-reveal .email-glyphs .ch {
+  display: inline-block;
+  min-width: 0.55em;
+  text-align: center;
+}
+.email-reveal.revealed { color: var(--accent); }
+.email-reveal.revealed a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------- Mentorship page ---------- */
+
+.r-mentorship .program {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.r-mentorship .program-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.r-mentorship .program-name {
+  font-family: $serif-font-stack;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  margin: 0;
+}
+.r-mentorship .role-pill {
+  font-family: $sans-font-stack;
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+.r-mentorship .program-desc {
+  font-family: $sans-font-stack;
+  font-size: 11.5px;
+  color: var(--muted);
+  margin: 6px 0 0;
+  line-height: 1.55;
+}
+
+/* ---------- Library page ---------- */
+
+.r-library h3.lib-section {
+  font-family: $sans-font-stack;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 8px;
+  margin: 28px 0 6px;
+}
+.r-library .lib-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: $sans-font-stack;
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+.r-library .lib-row .title {
+  color: var(--text);
+}
+.r-library .lib-row .title a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.r-library .lib-row .title a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+.r-library .lib-row .author { color: var(--muted); margin-left: 4px; font-style: italic; }
+.r-library .lib-row .source {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 11.5px;
+}
+
+/* ---------- Mobile breakpoints ---------- */
+
+@media (max-width: 960px) {
+  .r-container { padding: 0 18px; }
+}
+
+@media (max-width: 640px) {
+  .r-container { padding: 0 16px; }
+
+  .r-home .r-hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+  .r-home .r-hero .avatar {
+    grid-row: 1;
+    justify-self: start;
+  }
+  .r-home .r-hero .role-block { grid-row: 2; }
+
+  .paper { padding: 10px 12px; }
+  .paper .paper-title { font-size: 13px; }
+  .paper .meta { font-size: 10px; }
+
+  .r-news li { grid-template-columns: 70px 1fr; gap: 10px; }
+  .r-news .date { font-size: 11px; }
+
+  footer .r-footer-row {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}

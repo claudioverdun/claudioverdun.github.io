@@ -1,21 +1,24 @@
 /*******************************************************************************
- * Themes
+ * Themes — B2 Steel & Ice (redesign)
  ******************************************************************************/
 
+// Light theme (al-folio default container)
 :root {
-  --global-bg-color: #{$white-color};
-  --global-code-bg-color: #{$code-bg-color-light};
-  --global-text-color: #{$black-color};
-  --global-text-color-light: #{$grey-color};
-  --global-theme-color: #{$purple-color};
-  --global-hover-color: #{$purple-color};
-  --global-hover-text-color: #{$white-color};
-  --global-footer-bg-color: #{$grey-color-dark};
-  --global-footer-text-color: #{$grey-color-light};
-  --global-footer-link-color: #{$white-color};
-  --global-distill-app-color: #{$grey-color};
-  --global-divider-color: rgba(0,0,0,.1);
-  --global-card-bg-color: #{$white-color};
+  // al-folio variables (kept for the parts of the template we have not
+  // rewritten yet — blog, posts, projects)
+  --global-bg-color:           #{$b2-bg-light};
+  --global-code-bg-color:      rgba(127, 163, 194, 0.08);
+  --global-text-color:         #{$b2-text-light};
+  --global-text-color-light:   #{$b2-muted-light};
+  --global-theme-color:        #{$b2-accent-light};
+  --global-hover-color:        #{$b2-accent-light};
+  --global-hover-text-color:   #{$b2-bg-light};
+  --global-footer-bg-color:    #{$b2-bg-light};
+  --global-footer-text-color:  #{$b2-muted-light};
+  --global-footer-link-color:  #{$b2-text-light};
+  --global-distill-app-color:  #{$b2-muted-light};
+  --global-divider-color:      #{$b2-rule-light};
+  --global-card-bg-color:      #{$b2-card-bg-light};
 
   --global-tip-block: #42b983;
   --global-tip-block-bg: #e2f5ec;
@@ -30,37 +33,37 @@
   --global-danger-block-text: #600;
   --global-danger-block-title: #c00;
 
-  .fa-sun {
-    display : none;
-  }
-  .fa-moon {
-    padding-left: 10px;
-    padding-top: 12px;
-    display : block;
-  }
+  // Redesign-specific tokens (used by _redesign.scss)
+  --bg:               #{$b2-bg-light};
+  --text:             #{$b2-text-light};
+  --muted:            #{$b2-muted-light};
+  --rule:             #{$b2-rule-light};
+  --accent:           #{$b2-accent-light};
+  --gold:             #{$b2-gold-light};
+  --card-bg:          #{$b2-card-bg-light};
+  --card-border-hover:#{$b2-card-border-hover-light};
 
-  .repo-img-light {
-    display: block;
-  }
-  .repo-img-dark {
-    display: none;
-  }
+  .fa-sun  { display: none; }
+  .fa-moon { padding-left: 10px; padding-top: 12px; display: block; }
+  .repo-img-light { display: block; }
+  .repo-img-dark  { display: none; }
 }
 
+// Dark theme — the default for this site
 html[data-theme='dark'] {
-  --global-bg-color: #{$grey-color-dark};
-  --global-code-bg-color: #{$code-bg-color-dark};
-  --global-text-color: #{$grey-color-light};
-  --global-text-color-light: #{$grey-color-light};
-  --global-theme-color: #{$cyan-color};
-  --global-hover-color: #{$cyan-color};
-  --global-hover-text-color: #{$white-color};
-  --global-footer-bg-color: #{$grey-color-light};
-  --global-footer-text-color: #{$grey-color-dark};
-  --global-footer-link-color: #{$black-color};
-  --global-distill-app-color: #{$grey-color-light};
-  --global-divider-color: #424246;
-  --global-card-bg-color: #{$grey-900};
+  --global-bg-color:           #{$b2-bg-dark};
+  --global-code-bg-color:      rgba(127, 163, 194, 0.08);
+  --global-text-color:         #{$b2-text-dark};
+  --global-text-color-light:   #{$b2-muted-dark};
+  --global-theme-color:        #{$b2-accent-dark};
+  --global-hover-color:        #{$b2-accent-dark};
+  --global-hover-text-color:   #{$b2-bg-dark};
+  --global-footer-bg-color:    #{$b2-bg-dark};
+  --global-footer-text-color:  #{$b2-muted-dark};
+  --global-footer-link-color:  #{$b2-text-dark};
+  --global-distill-app-color:  #{$b2-muted-dark};
+  --global-divider-color:      #{$b2-rule-dark};
+  --global-card-bg-color:      #{$b2-card-bg-dark};
 
   --global-tip-block: #42b983;
   --global-tip-block-bg: #e2f5ec;
@@ -75,19 +78,17 @@ html[data-theme='dark'] {
   --global-danger-block-text: #600;
   --global-danger-block-title: #c00;
 
-  .fa-sun {
-    padding-left: 10px;
-    padding-top: 12px;
-    display : block;
-  }
-  .fa-moon {
-    display : none;
-  }
+  --bg:               #{$b2-bg-dark};
+  --text:             #{$b2-text-dark};
+  --muted:            #{$b2-muted-dark};
+  --rule:             #{$b2-rule-dark};
+  --accent:           #{$b2-accent-dark};
+  --gold:             #{$b2-gold-dark};
+  --card-bg:          #{$b2-card-bg-dark};
+  --card-border-hover:#{$b2-card-border-hover-dark};
 
-  .repo-img-light {
-    display: none;
-  }
-  .repo-img-dark {
-    display: block;
-  }
+  .fa-sun  { padding-left: 10px; padding-top: 12px; display: block; }
+  .fa-moon { display: none; }
+  .repo-img-light { display: none; }
+  .repo-img-dark  { display: block; }
 }
