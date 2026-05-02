@@ -1,6 +1,6 @@
 {%- if include.limit -%}{%- assign cap = include.limit -%}{%- else -%}{%- assign cap = 8 -%}{%- endif -%}
 <div class="r-selected-papers" data-cap="{{ cap }}">
-  {% bibliography -f {{ site.scholar.bibliography }} --query @*[selected=true]* --max=999 %}
+  {% bibliography -f {{ site.scholar.bibliography }} --group_by none --query @*[selected=true]* --max=999 %}
 </div>
 <script>
   // Mark the selected-papers cards as always-open (no collapse on home page)
