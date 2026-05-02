@@ -89,13 +89,25 @@ let transTheme = () => {
 
 let initTheme = (theme) => {
   if (theme == null || theme == "null") {
+    // Redesign default: dark unless the user explicitly chose light or
+    // their system explicitly prefers light.
     const userPref = window.matchMedia;
-    if (userPref && userPref("(prefers-color-scheme: dark)").matches) {
+    if (userPref && userPref("(prefers-color-scheme: light)").matches) {
+      theme = "light";
+    } else {
       theme = "dark";
     }
   }
-
   setTheme(theme);
 };
 
-initTheme(localStorage.getItem("theme"));
+// Redesign: respect the data-theme attribute set by the boot script in head.html.
+// Only fall back to localStorage / system preference if the attribute is absent.
+(function () {
+  var booted = document.documentElement.getAttribute("data-theme");
+  if (booted === "dark" || booted === "light") {
+    setTheme(booted);
+  } else {
+    initTheme(localStorage.getItem("theme"));
+  }
+})();
