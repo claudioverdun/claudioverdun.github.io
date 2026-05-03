@@ -1,6 +1,6 @@
 // Toggles `.open` on `.paper` cards (publications page) and `.r-pub-year`
 // year sections. Cards inside `.always-open` parents are non-interactive.
-function initCollapse() {
+document.addEventListener('DOMContentLoaded', function () {
   // Per-paper expand
   document.querySelectorAll('.paper:not(.always-open) .paper-head').forEach(function (head) {
     head.addEventListener('click', function () {
@@ -28,11 +28,4 @@ function initCollapse() {
       }
     });
   });
-}
-
-// Run on DOMContentLoaded and also immediately if DOM is already ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initCollapse);
-} else {
-  initCollapse();
-}
+});
