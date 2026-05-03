@@ -1,7 +1,15 @@
-// Toggles `.open` on `.paper` cards (publications page) and `.r-pub-year`
-// year sections. Cards inside `.always-open` parents are non-interactive.
-document.addEventListener('DOMContentLoaded', function () {
-  // Per-paper expand
+// Toggles `.open` on `.paper` cards. Cards inside `.always-open` parents
+// are non-interactive. Year-section toggling is wired by the inline IIFE
+// in `_pages/publications.md`, which creates the `.r-pub-year` elements
+// during parse and binds its own handlers — duplicating that here would
+// cause a double-toggle that cancels the click.
+//
+// This file is loaded with `defer`, so the document is fully parsed when
+// it executes. We deliberately avoid `DOMContentLoaded` because another
+// `defer` script (polyfill.io) can stall for ~60s on network failure,
+// which delays DCL — and polyfill.io is the kind of remote dependency
+// that may stay broken indefinitely.
+(function () {
   document.querySelectorAll('.paper:not(.always-open) .paper-head').forEach(function (head) {
     head.addEventListener('click', function () {
       head.parentElement.classList.toggle('open');
@@ -14,18 +22,4 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
-
-  // Per-year expand
-  document.querySelectorAll('.r-pub-year .year-head').forEach(function (head) {
-    head.addEventListener('click', function () {
-      head.parentElement.classList.toggle('open');
-    });
-    head.setAttribute('tabindex', '0');
-    head.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        head.parentElement.classList.toggle('open');
-      }
-    });
-  });
-});
+})();
