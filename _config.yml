@@ -110,7 +110,10 @@ contact_note: >
 # Analytics and search engine verification
 # -----------------------------------------------------------------------------
 
-google_analytics:  # your Google Analytics measurement ID (format: G-XXXXXXXXXX)
+# Google Analytics measurement ID. Leave empty to disable GA entirely.
+# To enable: see docs/superpowers/notes/google-analytics-setup.md for the
+# 5-step walkthrough (create GA4 property, copy G-XXXXXXXXXX, paste here).
+google_analytics:
 cronitor_analytics:  # cronitor RUM analytics site ID (format: XXXXXXXXX)
 
 google_site_verification:  # your google-site-verification ID (Google Search Console)
