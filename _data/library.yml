@@ -1,0 +1,12 @@
+papers:
+  # Seeded empty for now — the user will add entries iteratively.
+  # Example shape:
+  # - title: "Concrete Problems in AI Safety"
+  #   author: "Amodei et al."
+  #   url: https://arxiv.org/abs/1606.06565
+  #   source: arXiv 2016
+books:
+talks:
+youtube:
+blogs:
+courses:
