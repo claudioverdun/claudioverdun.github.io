@@ -9,4 +9,23 @@ _site
 Gemfile.lock
 vendor
 .superpowers/
+.playwright-mcp/
+redesign-*.png
+task*.png
+/tmp/redesign-*.png
+
+# Local debug/screenshot artifacts and tooling state
+.claude/
+align-*.png
+hero-*.png
+home-*.png
+home_*.png
+library-*.png
+mentorship_*.png
+phase[0-9]*.png
+phase[0-9]*-take*.png
+pub_*.png
+pubs-*.png
+v[0-9]-*.png
+v[0-9]*.png
 

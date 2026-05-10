@@ -1,0 +1,60 @@
+papers:
+  - title: "Compressed Sensing"
+    author: "David L. Donoho"
+    url: https://doi.org/10.1109/TIT.2006.871582
+    source: IEEE Trans. Inf. Theory, 2006
+
+  - title: "Finding Structure with Randomness: Probabilistic Algorithms for Constructing Approximate Matrix Decompositions"
+    author: "N. Halko, P. G. Martinsson, and J. A. Tropp"
+    url: https://doi.org/10.1137/090771806
+    source: SIAM Review, 2011
+
+books:
+  - title: "An Introduction to Probability Theory and Its Applications, Vol. 1"
+    author: "William Feller"
+    url: https://www.wiley.com/en-us/An+Introduction+to+Probability+Theory+and+Its+Applications%2C+Volume+1%2C+3rd+Edition-p-9780471257080
+    source: Wiley, 3rd ed. 1968
+
+  - title: "Matrix Mathematics: Theory, Facts, and Formulas"
+    author: "Dennis S. Bernstein"
+    url: https://press.princeton.edu/books/hardcover/9780691140391/matrix-mathematics
+    source: Princeton University Press, 2nd ed. 2009
+
+  - title: "Caravaggio. The Complete Works"
+    author: "Sebastian Schütze"
+    url: https://www.taschen.com/en/books/art/44812/caravaggio-the-complete-works/
+    source: Taschen
+
+  - title: "Counterexamples in Analysis"
+    author: "Bernard R. Gelbaum and John M. H. Olmsted"
+    source: Dover
+
+talks:
+youtube:
+  - title: "3Blue1Brown"
+    url: https://www.youtube.com/@3blue1brown
+    source: YouTube channel
+
+  - title: "Primitive Technology"
+    url: https://www.youtube.com/@primitivetechnology9550
+    source: YouTube channel
+
+  - title: "Half as Interesting"
+    url: https://www.youtube.com/@halfasinteresting
+    source: YouTube channel
+
+  - title: "Geography Now"
+    url: https://www.youtube.com/@GeographyNow
+    source: YouTube channel
+
+  - title: "Langfocus"
+    url: https://www.youtube.com/@Langfocus
+    source: YouTube channel
+
+podcasts:
+  - title: "Dwarkesh Patel"
+    url: https://www.youtube.com/@DwarkeshPatel
+    source: Podcast
+
+blogs:
+courses:

@@ -1,0 +1,22 @@
+{%- assign news = site.news | reverse -%}
+{%- if include.limit -%}
+  {%- assign cap = include.limit -%}
+{%- else -%}
+  {%- assign cap = 5 -%}
+{%- endif -%}
+<div class="r-news">
+  <ul>
+    {% for item in news limit: cap %}
+      <li>
+        <span class="date">{{ item.date | date: "%b %Y" }}</span>
+        <span class="msg">
+          {%- if item.inline -%}
+            {{ item.content | markdownify | remove: '<p>' | remove: '</p>' | emojify }}
+          {%- else -%}
+            <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+          {%- endif -%}
+        </span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

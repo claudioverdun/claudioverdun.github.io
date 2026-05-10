@@ -1,0 +1,20 @@
+{%- if include.limit -%}{%- assign cap = include.limit -%}{%- else -%}{%- assign cap = 8 -%}{%- endif -%}
+<div class="r-selected-papers" data-cap="{{ cap }}">
+  {% bibliography -f {{ site.scholar.bibliography }} --group_by none --query @*[selected=true]* --max=999 %}
+</div>
+<script>
+  // Mark the selected-papers cards as always-open (no collapse on home page)
+  // and trim to the configured cap. Removes the bibliography <ol>'s <li>
+  // wrappers entirely so the list isn't numbered and there are no empty rows.
+  (function () {
+    var wrap = document.currentScript.previousElementSibling;
+    if (!wrap) return;
+    var cap = parseInt(wrap.getAttribute('data-cap') || '8', 10);
+    var papers = wrap.querySelectorAll('.paper');
+    papers.forEach(function (p, i) {
+      var li = p.closest('li') || p;
+      if (i >= cap) { li.parentNode.removeChild(li); return; }
+      p.classList.add('always-open');
+    });
+  })();
+</script>

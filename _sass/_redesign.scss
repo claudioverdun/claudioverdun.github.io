@@ -1,0 +1,821 @@
+/*******************************************************************************
+ * Redesign — B2 Steel & Ice
+ * Layered on top of al-folio. All tokens read from CSS custom properties
+ * defined in _themes.scss so light/dark switching is just a `data-theme` flip.
+ ******************************************************************************/
+
+/* ---------- Typography ---------- */
+
+body {
+  font-family: $serif-font-stack;
+  font-size: 16px;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.redesign-uppercase,
+.section-label,
+.role-label,
+.year-head,
+.badge {
+  font-family: $sans-font-stack;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* ---------- Layout container ---------- */
+
+.r-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* Override al-folio's Bootstrap `.container.mt-5` on the home redesign:
+ * - Cancel the top gap so the hero hugs the navbar (small clearance).
+ * - Expand max-width past Bootstrap's responsive caps so `.r-container`'s
+ *   own max-width controls the layout instead of the outer wrapper. */
+.container.mt-5:has(.r-home) {
+  margin-top: 0 !important;
+  max-width: 1080px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.container.mt-5:has(.r-publications) {
+  margin-top: 0 !important;
+  max-width: 1000px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.r-home { margin-top: 8px; }
+.r-publications { max-width: 1000px; }
+
+/* ---------- Top bar (navbar) ---------- */
+
+/* Widen the navbar's inner container on the home redesign so its nav links
+ * align with the wider `.r-container` content below. */
+body:has(.r-home) #navbar > .container {
+  max-width: 1080px;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+body:has(.r-publications) #navbar > .container {
+  max-width: 1000px;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+#navbar.navbar {
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  font-family: $sans-font-stack;
+
+  .navbar-brand {
+    font-family: $serif-font-stack;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .nav-link {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+  }
+  .nav-link:hover,
+  .nav-item.active .nav-link {
+    color: var(--accent);
+  }
+  #light-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text);
+    padding: 0 0 0 14px;
+    i { color: var(--accent); font-size: 14px; }
+  }
+}
+
+/* ---------- Home: hero ---------- */
+
+.r-home .r-hero {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  /* Three rows: role-label only in col 1; the name shares row 2 with the
+   * picture so the picture's TOP aligns with the H1 baseline; intro fills
+   * the remaining height in col 1 while the picture spans rows 2-3 in col
+   * 2. */
+  grid-template-areas:
+    "role  ."
+    "name  avatar"
+    "intro avatar";
+  gap: 0 44px;
+  align-items: start;
+  /* Bottom padding reserves vertical space for the absolute-positioned
+   * `.avatar-icons` row (32px tall, 14px below the picture). */
+  padding: 8px 0 60px;
+}
+.r-home .r-hero .role-label { grid-area: role; }
+.r-home .r-hero .hero-name { grid-area: name; }
+.r-home .r-hero .hero-intro { grid-area: intro; }
+.r-home .r-hero .avatar-block { grid-area: avatar; }
+.r-home .r-hero .role-label {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+}
+.r-home .r-hero .role-label a {
+  color: inherit;
+  text-decoration: none;
+}
+.r-home .r-hero .role-label a:hover { color: var(--text); }
+.r-home .r-hero .hero-name {
+  font-family: $serif-font-stack;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+.r-home .r-hero .hero-intro {
+  margin-top: 0;
+}
+.r-home .r-hero .hero-intro p {
+  font-family: $serif-font-stack;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+.r-home .r-hero .hero-intro p:last-child { margin-bottom: 0; }
+.r-home .r-hero .hero-intro a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.r-home .r-hero .hero-intro a:hover { border-bottom-color: var(--accent); }
+.r-home .r-hero .avatar-block {
+  position: relative;
+  width: 220px;
+  height: 220px;
+}
+.r-home .r-hero .avatar {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  display: block;
+}
+/* Absolute-positioned so they don't add to avatar-block height — that way
+ * the picture's bottom edge (not picture+icons) aligns with the intro's
+ * bottom edge under `align-items: end` on the hero grid. */
+.r-home .r-hero .avatar-icons {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-size: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.r-home .r-hero .avatar-icons .hero-icon {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 32px;
+  display: inline-flex;
+  align-items: center;
+}
+.r-home .r-hero .avatar-icons .hero-icon:hover { color: var(--text); }
+.r-home .r-hero .avatar-icons .email-reveal {
+  font-size: 32px;
+  min-height: 0;
+  padding: 0;
+  color: var(--accent);
+  gap: 8px;
+  /* Center the icon vertically against the Google Scholar `.hero-icon`
+   * sibling so both icons share a baseline regardless of the surrounding
+   * `.email-glyphs` text height. */
+  align-items: center;
+}
+.r-home .r-hero .avatar-icons .email-reveal .email-icon {
+  font-size: 32px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+.r-home .r-hero .avatar-icons .email-reveal .email-icon i {
+  font-size: 32px;
+  line-height: 1;
+}
+.r-home .r-hero .avatar-icons .email-reveal .email-glyphs {
+  display: inline;
+  font-size: 13px;
+  font-family: $mono-font-stack;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+.r-home .r-hero .avatar-icons .email-reveal.revealed .email-glyphs {
+  color: var(--accent);
+}
+
+/* ---------- Home: bio ---------- */
+
+.r-home .r-bio {
+  padding: 20px 0 28px;
+  border-top: 1px solid var(--rule);
+}
+.r-home .r-bio p {
+  font-family: $serif-font-stack;
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.r-home .r-bio a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.r-home .r-bio a:hover { border-bottom-color: var(--accent); }
+
+/* ---------- Section header ---------- */
+
+.r-section {
+  margin: 26px 0 14px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.r-section .section-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.r-section a.see-all {
+  font-family: $sans-font-stack;
+  font-size: 11px;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+.r-section a.see-all:hover { text-decoration: underline; }
+
+/* ---------- News list ---------- */
+
+.r-news ul { list-style: none; padding: 0; margin: 0; }
+.r-news li {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: $sans-font-stack;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.r-news .date {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+}
+.r-news .msg { color: var(--text); }
+.r-news .msg a { color: var(--accent); text-decoration: none; }
+.r-news .msg a:hover { text-decoration: underline; }
+
+/* ---------- Bibliography wrapper (jekyll-scholar emits <ol class="bibliography">) ---------- */
+
+.bibliography,
+.r-selected-papers ol.bibliography,
+#bib-output ol.bibliography {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.bibliography > li,
+#bib-output ol.bibliography > li {
+  list-style: none;
+}
+
+/* ---------- Paper card (used on home selected + publications) ---------- */
+
+.paper {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin: 8px 0;
+  transition: border-color 0.15s ease;
+}
+.paper:hover { border-color: var(--card-border-hover); }
+.paper .paper-head {
+  cursor: pointer;
+  user-select: none;
+}
+/* Flex row: title (with optional inline qualifier badge) on the left,
+ * venue badge pinned to the right. */
+.paper .paper-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.paper .paper-title {
+  font-family: $serif-font-stack;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.45;
+  margin: 0;
+  color: var(--text);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.paper .paper-title .title-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.paper .paper-title .title-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.paper .paper-title .star {
+  color: var(--gold);
+  margin-right: 4px;
+  font-size: 12px;
+}
+.paper .paper-title .badge {
+  display: inline-block;
+  font-family: $sans-font-stack;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin-left: 6px;
+  vertical-align: 1px;
+  text-transform: uppercase;
+}
+/* Right-aligned venue badge — sits in the paper row, not inside the title. */
+.paper .badge-venue {
+  flex-shrink: 0;
+  align-self: center;
+  font-family: $sans-font-stack;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 3px 9px;
+  border-radius: 3px;
+  background: var(--text);
+  color: var(--bg);
+  border: 1px solid var(--text);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+[data-theme="dark"] .paper .badge-venue {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+}
+/* When the venue badge is a link to the conference site, kill default link
+   chrome so it still reads as a badge, and add a subtle hover affordance. */
+.paper a.badge-venue {
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+.paper a.badge-venue:hover,
+.paper a.badge-venue:focus {
+  opacity: 0.78;
+  text-decoration: none;
+}
+.paper .paper-title .badge.b-blue {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+}
+.paper .paper-title .badge.b-gold {
+  background: var(--gold);
+  color: #fff;
+  border: 1px solid var(--gold);
+}
+.paper .paper-title .badge.b-mono {
+  background: var(--text);
+  color: var(--bg);
+  border: 1px solid var(--text);
+}
+[data-theme="dark"] .paper .paper-title .badge.b-blue {
+  background: rgba(127, 163, 194, 0.18);
+  color: var(--accent);
+  border: 1px solid rgba(127, 163, 194, 0.45);
+}
+[data-theme="dark"] .paper .paper-title .badge.b-gold {
+  background: rgba(201, 182, 125, 0.18);
+  color: var(--gold);
+  border: 1px solid rgba(201, 182, 125, 0.45);
+}
+[data-theme="dark"] .paper .paper-title .badge.b-mono {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+}
+.paper .meta {
+  font-family: $sans-font-stack;
+  font-size: 10.5px;
+  color: var(--muted);
+  margin: 4px 0 0;
+  line-height: 1.5;
+}
+.paper .meta em { font-style: normal; color: var(--text); font-weight: 600; }
+.paper .prev-venue {
+  font-family: $sans-font-stack;
+  font-size: 10.5px;
+  font-style: italic;
+  color: var(--muted);
+  margin: 4px 0 0;
+  line-height: 1.5;
+}
+.paper .highlight {
+  font-family: $sans-font-stack;
+  font-size: 10.5px;
+  font-style: italic;
+  color: var(--accent);
+  margin: 4px 0 0;
+  line-height: 1.5;
+}
+.paper .highlight a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.paper .highlight a:hover { border-bottom-color: var(--accent); }
+
+/* Collapsible body — used on publications page only */
+.paper .paper-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.paper.open .paper-body { max-height: 320px; }
+.paper .paper-body-inner {
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid var(--rule);
+}
+.paper .blurb {
+  font-family: $serif-font-stack;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+.paper .links a {
+  font-family: $sans-font-stack;
+  font-size: 11px;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  padding: 3px 8px;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+}
+.paper .links a:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Always-open variant (used on home page) */
+.paper.always-open .paper-body { max-height: 320px; }
+.paper.always-open .paper-head { cursor: default; }
+
+/* ---------- Publications page: year sections ---------- */
+
+.r-pub-year { margin-top: 28px; }
+.r-pub-year .year-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+  user-select: none;
+}
+.r-pub-year .year-head .count {
+  letter-spacing: 0.04em;
+}
+.r-pub-year .year-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.r-pub-year.open .year-body {
+  max-height: 8000px; /* large enough for any reasonable year of papers */
+}
+.r-pub-year .year-head::after {
+  content: '+';
+  color: var(--accent);
+  font-family: $sans-font-stack;
+  margin-left: 8px;
+}
+.r-pub-year.open .year-head::after { content: '−'; }
+
+/* ---------- Info for AI systems ----------
+   Present in the rendered HTML for crawlers and language-model scrapers,
+   visually hidden from sighted human readers. Off-screen rather than
+   display:none so the text still ships in the document. */
+
+.r-ai-info {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  background: var(--bg);
+  color: var(--muted);
+  border-top: 1px solid var(--rule);
+  font-family: $sans-font-stack;
+  font-size: 12px;
+}
+footer .r-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  max-width: 780px;
+  margin: 0 auto;
+}
+footer .r-footer-icons { display: flex; gap: 14px; align-items: center; }
+footer .r-footer-icons a { color: var(--muted); text-decoration: none; font-size: 14px; }
+footer .r-footer-icons a:hover { color: var(--accent); }
+
+/* ---------- Email reveal ---------- */
+
+.email-reveal {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+  font-family: $mono-font-stack;
+  color: var(--text);
+  font-size: 13px;
+  min-height: 24px;
+  padding: 2px 0;
+}
+.email-reveal:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }
+.email-reveal .email-icon { color: var(--accent); font-size: 14px; }
+.email-reveal .email-glyphs .ch {
+  display: inline-block;
+  min-width: 0.55em;
+  text-align: center;
+}
+.email-reveal.revealed { color: var(--accent); }
+.email-reveal.revealed a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------- Mentorship page ---------- */
+
+.r-mentorship .program {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+.r-mentorship .program-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.r-mentorship .program-logo img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+.r-mentorship .program-logo .monogram {
+  font-family: $sans-font-stack;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+.r-mentorship .program-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.r-mentorship .program-name {
+  font-family: $serif-font-stack;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  margin: 0;
+}
+.r-mentorship .program-name a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.r-mentorship .program-name a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.r-mentorship .role-pill {
+  font-family: $sans-font-stack;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+.r-mentorship .program-desc {
+  font-family: $sans-font-stack;
+  font-size: 13px;
+  color: var(--muted);
+  margin: 6px 0 0;
+  line-height: 1.6;
+}
+
+/* ---------- Library page ---------- */
+
+.r-library .lib-group { margin-top: 28px; }
+.r-library .lib-group:first-of-type { margin-top: 0; }
+.r-library h3.lib-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: $sans-font-stack;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 8px;
+  margin: 0 0 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.r-library h3.lib-section::after {
+  content: '+';
+  color: var(--accent);
+  font-family: $sans-font-stack;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0;
+  margin-left: 8px;
+}
+.r-library .lib-group.open h3.lib-section::after { content: '−'; }
+.r-library .lib-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.r-library .lib-group.open .lib-body { max-height: 6000px; }
+.r-library .lib-row {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: $sans-font-stack;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+.r-library .lib-row-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: baseline;
+}
+.r-library .lib-row .title {
+  color: var(--text);
+  font-weight: 500;
+}
+.r-library .lib-row .title a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.r-library .lib-row .title a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+.r-library .lib-row .author { color: var(--muted); margin-left: 4px; font-style: italic; font-weight: 400; }
+.r-library .lib-row .source {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.r-library .lib-row .note {
+  font-family: $serif-font-stack;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 6px 0 0;
+}
+
+/* ---------- Mobile breakpoints ---------- */
+
+@media (max-width: 960px) {
+  .r-container { padding: 0 20px; }
+  .r-home .r-hero {
+    grid-template-columns: 1fr 180px;
+    gap: 12px 28px;
+  }
+  .r-home .r-hero .avatar-block { width: 180px; height: 180px; }
+  .r-home .r-hero .avatar { width: 180px; height: 180px; }
+  .r-home .r-hero .hero-name { font-size: 28px; }
+}
+
+@media (max-width: 640px) {
+  .r-container { padding: 0 16px; }
+
+  .r-home .r-hero {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "role"
+      "name"
+      "avatar"
+      "intro";
+    gap: 14px;
+    padding: 8px 0 16px;
+  }
+  /* In single-column mobile layout, restore the icons to in-flow so they
+   * don't overlap the bio section below. */
+  .r-home .r-hero .avatar-block {
+    position: static;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .r-home .r-hero .avatar-icons {
+    position: static;
+  }
+  .r-home .r-hero .avatar { width: 140px; height: 140px; }
+  .r-home .r-hero .hero-name { font-size: 26px; }
+
+  .r-home .r-bio p { font-size: 15.5px; }
+
+  .r-mentorship .program {
+    grid-template-columns: 52px 1fr;
+    gap: 14px;
+  }
+  .r-mentorship .program-logo { width: 52px; height: 52px; }
+
+  .r-library .lib-row-head {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .paper { padding: 10px 12px; }
+  .paper .paper-title { font-size: 13px; }
+  .paper .meta { font-size: 10px; }
+
+  .r-news li { grid-template-columns: 70px 1fr; gap: 10px; }
+  .r-news .date { font-size: 11px; }
+
+  .r-pub-year .year-head {
+    min-height: 44px;
+    padding: 10px 0;
+    align-items: center;
+  }
+
+  .email-reveal {
+    min-height: 28px;
+    padding: 4px 0;
+  }
+
+  footer .r-footer-row {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
