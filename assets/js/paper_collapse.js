@@ -10,15 +10,21 @@
 // which delays DCL — and polyfill.io is the kind of remote dependency
 // that may stay broken indefinitely.
 (function () {
-  document.querySelectorAll('.paper:not(.always-open) .paper-head').forEach(function (head) {
-    head.addEventListener('click', function () {
-      head.parentElement.classList.toggle('open');
+  document.querySelectorAll('.paper:not(.always-open)').forEach(function (paper) {
+    var body = paper.querySelector('.paper-body-inner');
+    if (!body || body.textContent.trim() === '') return;
+    var head = paper.querySelector('.paper-head');
+    if (!head) return;
+    head.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      paper.classList.toggle('open');
     });
     head.setAttribute('tabindex', '0');
     head.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') {
+        if (e.target.closest('a')) return;
         e.preventDefault();
-        head.parentElement.classList.toggle('open');
+        paper.classList.toggle('open');
       }
     });
   });

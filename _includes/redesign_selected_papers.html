@@ -4,14 +4,16 @@
 </div>
 <script>
   // Mark the selected-papers cards as always-open (no collapse on home page)
-  // and trim to the configured cap. Uses safe DOM methods (no innerHTML).
+  // and trim to the configured cap. Removes the bibliography <ol>'s <li>
+  // wrappers entirely so the list isn't numbered and there are no empty rows.
   (function () {
     var wrap = document.currentScript.previousElementSibling;
     if (!wrap) return;
     var cap = parseInt(wrap.getAttribute('data-cap') || '8', 10);
     var papers = wrap.querySelectorAll('.paper');
     papers.forEach(function (p, i) {
-      if (i >= cap) { p.parentNode.removeChild(p); return; }
+      var li = p.closest('li') || p;
+      if (i >= cap) { li.parentNode.removeChild(li); return; }
       p.classList.add('always-open');
     });
   })();

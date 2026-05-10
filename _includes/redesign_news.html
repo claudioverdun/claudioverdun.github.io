@@ -8,10 +8,10 @@
   <ul>
     {% for item in news limit: cap %}
       <li>
-        <span class="date">{{ item.date | date: "%b %-d, %Y" }}</span>
+        <span class="date">{{ item.date | date: "%b %Y" }}</span>
         <span class="msg">
           {%- if item.inline -%}
-            {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
+            {{ item.content | markdownify | remove: '<p>' | remove: '</p>' | emojify }}
           {%- else -%}
             <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
           {%- endif -%}

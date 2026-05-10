@@ -37,19 +37,46 @@
 {%- elsif venue_lc contains "oral" %}{%- assign qualifier = "Oral" -%}
 {%- endif -%}
 
-{%- comment -%} -- Compose badge text and class -- {%- endcomment -%}
-{%- assign badge_class = "b-mono" -%}
-{%- if entry.selected %}{%- assign badge_class = "b-blue" -%}{%- endif -%}
-{%- if qualifier == "Best Paper" or qualifier == "Best Student Paper" %}{%- assign badge_class = "b-gold" -%}{%- endif -%}
-
-{%- assign badge_text = "" -%}
-{%- if venue_token != "" -%}
-  {%- assign badge_text = venue_token | upcase | append: " " | append: entry.year -%}
-  {%- if qualifier != "" -%}
-    {%- assign badge_text = badge_text | append: " · " | append: qualifier | upcase -%}
-  {%- endif -%}
+{%- comment -%}
+  Venue badge: conference token only (no year, no qualifier). Sits right-
+  aligned in the paper row. Falls back to the raw venue string if no token
+  matched, and to "PREPRINT" for preprints.
+{%- endcomment -%}
+{%- assign venue_badge_class = "b-mono" -%}
+{%- assign venue_badge_text = "" -%}
+{%- if entry.preprint -%}
+  {%- assign venue_badge_text = "Preprint" -%}
+{%- elsif venue_token != "" -%}
+  {%- assign venue_badge_text = venue_token -%}
 {%- elsif venue_src != "" -%}
-  {%- assign badge_text = venue_src | strip | truncate: 28 -%}
+  {%- assign venue_badge_text = venue_src | strip -%}
+{%- endif -%}
+
+{%- comment -%} -- Map detected venue token to a canonical conference URL -- {%- endcomment -%}
+{%- assign venue_url = "" -%}
+{%- if venue_token == "NeurIPS" %}{%- assign venue_url = "https://neurips.cc/" -%}
+{%- elsif venue_token == "ICML" %}{%- assign venue_url = "https://icml.cc/" -%}
+{%- elsif venue_token == "ICLR" %}{%- assign venue_url = "https://iclr.cc/" -%}
+{%- elsif venue_token == "CVPR" %}{%- assign venue_url = "https://cvpr.thecvf.com/" -%}
+{%- elsif venue_token == "AISTATS" %}{%- assign venue_url = "https://aistats.org/" -%}
+{%- elsif venue_token == "FAccT" %}{%- assign venue_url = "https://facctconference.org/" -%}
+{%- elsif venue_token == "COLT" %}{%- assign venue_url = "http://learningtheory.org/" -%}
+{%- elsif venue_token == "ECCV" %}{%- assign venue_url = "https://eccv.ecva.net/" -%}
+{%- elsif venue_token == "ICASSP" %}{%- assign venue_url = "https://signalprocessingsociety.org/icassp" -%}
+{%- elsif venue_token == "AAAI" %}{%- assign venue_url = "https://aaai.org/conference/aaai/" -%}
+{%- elsif venue_token == "ISIT" %}{%- assign venue_url = "https://www.itsoc.org/conferences/isit" -%}
+{%- endif -%}
+
+{%- comment -%}
+  Qualifier badge (Spotlight/Oral/Best Paper) — sits inline next to the
+  title, highlighted. Best Paper variants use gold; Spotlight/Oral use the
+  blue accent so they pop without competing with Best Paper recognition.
+{%- endcomment -%}
+{%- assign qualifier_class = "" -%}
+{%- if qualifier == "Best Paper" or qualifier == "Best Student Paper" or qualifier == "Oral" -%}
+  {%- assign qualifier_class = "b-gold" -%}
+{%- elsif qualifier == "Spotlight" -%}
+  {%- assign qualifier_class = "b-blue" -%}
 {%- endif -%}
 
 {%- comment -%} -- Pick canonical link -- {%- endcomment -%}
@@ -60,14 +87,9 @@
   {%- else %}{%- assign canonical_url = entry.pdf | prepend: "/assets/pdf/" | relative_url -%}{%- endif -%}
 {%- elsif entry.arxiv and entry.arxiv != "" %}{%- assign canonical_url = entry.arxiv | prepend: "https://arxiv.org/abs/" -%}{%- endif -%}
 
-{%- comment -%} -- Author roll, with self-emphasis -- {%- endcomment -%}
-{%- assign author_array_size = entry.author_array | size -%}
-{%- assign author_array_limit = author_array_size -%}
-{%- if site.max_author_limit and author_array_size > site.max_author_limit %}
-  {%- assign author_array_limit = site.max_author_limit -%}
-{%- endif -%}
+{%- comment -%} -- Author roll: abbreviate first name to initial, show all authors -- {%- endcomment -%}
 {%- capture author_roll -%}
-{%- for author in entry.author_array limit: author_array_limit -%}
+{%- for author in entry.author_array -%}
   {%- assign author_is_self = false -%}
   {%- assign author_last_name = author.last | remove: "¶" | remove: "&" | remove: "*" | remove: "†" | remove: "^" -%}
   {%- if site.scholar.last_name contains author_last_name -%}
@@ -75,23 +97,50 @@
       {%- assign author_is_self = true -%}
     {%- endif -%}
   {%- endif -%}
+  {%- assign first_initial = author.first | strip | slice: 0, 1 | upcase -%}
   {%- if forloop.first == false %}, {% endif -%}
-  {%- if author_is_self -%}<em>{{author.first}} {{author.last}}</em>{%- else -%}{{author.first}} {{author.last}}{%- endif -%}
+  {%- if author_is_self -%}<em>{{ first_initial }}. {{ author.last }}</em>{%- else -%}{{ first_initial }}. {{ author.last }}{%- endif -%}
 {%- endfor -%}
-{%- assign more_authors = author_array_size | minus: author_array_limit -%}
-{%- if more_authors > 0 -%}, +{{ more_authors }} more{%- endif -%}
 {%- endcapture -%}
 
 <article class="paper" data-key="{{entry.key}}" id="{{entry.key}}">
   <header class="paper-head">
-    <h3 class="paper-title">
-      {%- if entry.selected -%}<span class="star">★</span>{%- endif -%}
-      {{ entry.title }}
-      {%- if badge_text != "" -%}
-        <span class="badge {{ badge_class }}">{{ badge_text }}</span>
+    <div class="paper-row">
+      <h3 class="paper-title">
+        {%- if canonical_url != "" -%}
+          <a class="title-link" href="{{ canonical_url }}" target="_blank" rel="noopener">{{ entry.title }}</a>
+        {%- else -%}
+          {{ entry.title }}
+        {%- endif -%}
+        {%- if qualifier != "" -%}
+          <span class="badge badge-qualifier {{ qualifier_class }}">{{ qualifier }}</span>
+        {%- endif -%}
+        {%- if entry.extra_badge_text and entry.extra_badge_text != "" -%}
+          {%- assign extra_class = entry.extra_badge_class | default: "b-gold" -%}
+          <span class="badge badge-qualifier {{ extra_class }}">{{ entry.extra_badge_text }}</span>
+        {%- endif -%}
+      </h3>
+      {%- if venue_badge_text != "" -%}
+        {%- if venue_url != "" -%}
+          <a class="badge badge-venue {{ venue_badge_class }} venue-link" href="{{ venue_url }}" target="_blank" rel="noopener">{{ venue_badge_text }}</a>
+        {%- else -%}
+          <span class="badge badge-venue {{ venue_badge_class }}">{{ venue_badge_text }}</span>
+        {%- endif -%}
       {%- endif -%}
-    </h3>
+    </div>
+    {%- if entry.prev_venue and entry.prev_venue != "" -%}
+      <p class="prev-venue">previously {{ entry.prev_venue }}</p>
+    {%- endif -%}
     <p class="meta">{{ author_roll }}</p>
+    {%- if entry.highlight_text and entry.highlight_text != "" -%}
+      <p class="highlight">
+        {%- if entry.highlight_url and entry.highlight_url != "" -%}
+          <a href="{{ entry.highlight_url }}" target="_blank" rel="noopener">{{ entry.highlight_text }}</a>
+        {%- else -%}
+          {{ entry.highlight_text }}
+        {%- endif -%}
+      </p>
+    {%- endif -%}
   </header>
   <section class="paper-body">
     <div class="paper-body-inner">
@@ -99,9 +148,6 @@
         <p class="blurb">{{ entry.blurb }}</p>
       {%- elsif entry.abstract -%}
         <p class="blurb">{{ entry.abstract | truncatewords: 35 }}</p>
-      {%- endif -%}
-      {%- if canonical_url != "" -%}
-        <div class="links"><a href="{{ canonical_url }}" target="_blank" rel="noopener">paper</a></div>
       {%- endif -%}
     </div>
   </section>

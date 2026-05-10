@@ -1,15 +1,31 @@
-- name: AI Safety Student Team (AISST)
-  org: Harvard
-  role: Mentor · Harvard
-  description: Undergraduate and graduate group at Harvard focused on technical AI safety. I mentor students on research projects in alignment, interpretability, and evaluation.
-  url: https://aisst.org/
-- name: MIT AI Alignment (MAIA)
-  org: MIT
-  role: Mentor · MIT
-  description: Student-led alignment community at MIT. I advise members on safety-relevant research directions and help shape reading-group curricula.
-  url: https://aialignment.mit.edu/
 - name: Cambridge Boston Alignment Initiative (CBAI)
   org: Cambridge / Boston
-  role: Research mentor
-  description: Initiative supporting alignment research and community-building across the Cambridge–Boston area. I serve as a research mentor for participating fellows.
+  role: Research manager
+  description: Initiative supporting alignment research and community-building across the Cambridge–Boston area. I serve as a research manager for participating fellows.
   url: https://www.cbai.ai/
+  monogram: CBAI
+  logo: /assets/img/mentorship/cbai.png
+
+- name: AI Safety Student Team (AISST)
+  org: Harvard
+  role: Technical development lead
+  description: Undergraduate and graduate group at Harvard focused on technical AI safety. I lead technical development and mentor students on research projects in alignment, interpretability, and evaluation.
+  url: https://aisst.ai/
+  monogram: AISST
+  logo: /assets/img/mentorship/aisst.png
+
+- name: MIT AI Alignment (MAIA)
+  org: MIT
+  role: Mentor & Instructor
+  description: Student-led alignment community at MIT. I teach the ARENA program, the AI Safety Education program developed by the London Initiative for Safe AI, and help shaping its curricula to the MIT community.
+  url: https://aialignment.mit.edu/
+  monogram: MAIA
+  logo: /assets/img/mentorship/maia.svg
+
+- name: SPAR (Supervised Program for Alignment Research)
+  org: Remote / Global
+  role: Research mentor
+  description: Remote research program pairing junior researchers with mentors on alignment and safety projects. I mentor SPAR fellows on technical research directions.
+  url: https://sparai.org/
+  monogram: SPAR
+  logo: /assets/img/mentorship/spar.png

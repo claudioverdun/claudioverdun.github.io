@@ -10,7 +10,7 @@
 {%- assign u_len = u | size -%}
 {%- assign d1_len = d1 | size -%}
 {%- assign d2_len = d2 | size -%}
-{%- assign target_len = u_len | plus: d1_len | plus: d2_len | plus: 2 -%}
+{%- assign target_len = u_len | plus: d1_len | plus: d2_len | plus: 2 | minus: 6 -%}
 <span class="email-reveal"
       tabindex="0"
       role="button"
@@ -18,7 +18,7 @@
       data-domain-1="{{ d1 }}"
       data-domain-2="{{ d2 }}"
       aria-label="Click to reveal email address">
-  <span class="email-icon" aria-hidden="true">&#9993;</span>
+  <span class="email-icon" aria-hidden="true"><i class="fas fa-envelope"></i></span>
   <span class="email-glyphs" data-target-len="{{ target_len }}"></span>
   <noscript>{{ u }} at {{ d1 }} dot {{ d2 }}</noscript>
 </span>

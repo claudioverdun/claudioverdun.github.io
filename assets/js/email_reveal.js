@@ -27,6 +27,19 @@
     }
   }
 
+  // How long the resolved address stays on screen before re-scrambling.
+  var REVERT_MS = 5000;
+
+  function rescramble(host) {
+    var glyphs = host.querySelector('.email-glyphs');
+    if (!glyphs) return;
+    var origLen = parseInt(glyphs.dataset.origTargetLen || glyphs.dataset.targetLen || '14', 10);
+    glyphs.dataset.targetLen = origLen;
+    fillRandom(glyphs);
+    host.classList.remove('revealed');
+    host.setAttribute('aria-label', 'Click to reveal email address');
+  }
+
   function reveal(host) {
     if (host.classList.contains('revealed')) return;
     host.classList.add('revealed');
@@ -40,6 +53,10 @@
     var addr = u + '@' + d1 + '.' + d2;
 
     var glyphs = host.querySelector('.email-glyphs');
+    // Remember the pre-reveal scramble length so we can restore it later.
+    if (!glyphs.dataset.origTargetLen) {
+      glyphs.dataset.origTargetLen = glyphs.dataset.targetLen || String(glyphs.querySelectorAll('.ch').length || 14);
+    }
     var spans = glyphs.querySelectorAll('.ch');
     if (spans.length !== addr.length) {
       glyphs.dataset.targetLen = addr.length;
@@ -59,13 +76,16 @@
         pos++;
       } else {
         clearInterval(tick);
-        // Wrap the resolved address in a mailto link for subsequent clicks.
+        // Wrap the resolved address in a mailto link so clicking it sends mail.
         while (glyphs.firstChild) glyphs.removeChild(glyphs.firstChild);
         var link = document.createElement('a');
         link.href = 'mailto:' + addr;
         link.textContent = addr;
         glyphs.appendChild(link);
         host.setAttribute('aria-label', addr);
+        // Auto-revert to scrambled glyphs after a short window so the
+        // animation can be re-triggered on subsequent clicks.
+        setTimeout(function () { rescramble(host); }, REVERT_MS);
       }
     }, 60);
   }

@@ -2,7 +2,6 @@
 layout: page
 permalink: /publications/
 title: papers
-description: Selected publications. As is common in mathematics, most of the publications are in alphabetical order.
 nav: true
 nav_order: 1
 ---
@@ -38,11 +37,6 @@ nav_order: 1
       ySpan.textContent = year;
       head.appendChild(ySpan);
 
-      var cSpan = document.createElement('span');
-      cSpan.className = 'count';
-      cSpan.setAttribute('data-count', '');
-      head.appendChild(cSpan);
-
       return head;
     }
 
@@ -71,12 +65,7 @@ nav_order: 1
       }
     });
 
-    // Fill counts and bind toggle handlers
     document.querySelectorAll('.r-pub-year').forEach(function (sec) {
-      var n = sec.querySelectorAll('.year-body .paper').length;
-      var countEl = sec.querySelector('[data-count]');
-      countEl.textContent = n + ' ' + (n === 1 ? 'paper' : 'papers');
-
       var head = sec.querySelector('.year-head');
       head.addEventListener('click', function () { sec.classList.toggle('open'); });
       head.setAttribute('tabindex', '0');
