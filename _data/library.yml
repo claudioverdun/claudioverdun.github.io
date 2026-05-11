@@ -51,9 +51,21 @@ youtube:
     url: https://www.youtube.com/@Langfocus
     source: YouTube channel
 
+  - title: "Tibees"
+    url: https://www.youtube.com/@tibees
+    source: YouTube channel
+
 podcasts:
   - title: "Dwarkesh Patel"
     url: https://www.youtube.com/@DwarkeshPatel
+    source: Podcast
+
+  - title: "Geschichten aus der Geschichte"
+    url: https://www.geschichte.fm
+    source: Podcast
+
+  - title: "Lex Fridman"
+    url: https://www.youtube.com/@lexfridman
     source: Podcast
 
 blogs:
