@@ -9,6 +9,11 @@ papers:
     url: https://doi.org/10.1137/090771806
     source: SIAM Review, 2011
 
+  - title: "Probabilistic Logics and the Synthesis of Reliable Organisms from Unreliable Components"
+    author: "John von Neumann"
+    url: https://doi.org/10.1515/9781400882618-003
+    source: Automata Studies, Princeton University Press, 1956
+
 books:
   - title: "An Introduction to Probability Theory and Its Applications, Vol. 1"
     author: "William Feller"
