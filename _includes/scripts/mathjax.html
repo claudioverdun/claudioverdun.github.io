@@ -7,6 +7,8 @@
       }
     };
   </script>
-  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@{{ site.mathjax.version }}/es5/tex-mml-chtml.js"></script>
-  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!-- SRI hash is pinned to mathjax version 3.2.0. If you bump site.mathjax.version
+       in _config.yml, regenerate it or the browser will refuse to load MathJax:
+       curl -fsSL "https://cdn.jsdelivr.net/npm/mathjax@<version>/es5/tex-mml-chtml.js" | openssl dgst -sha384 -binary | openssl base64 -A -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@{{ site.mathjax.version }}/es5/tex-mml-chtml.js" integrity="sha384-+BSz3oj3ILMYvOBr16U9i0H4RZRmGyQQ+1q9eqr8T3skmAFrJk8GmgwgqlCZdNSo" crossorigin="anonymous"></script>
   {%- endif %}
