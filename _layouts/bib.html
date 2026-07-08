@@ -98,8 +98,10 @@
     {%- endif -%}
   {%- endif -%}
   {%- assign first_initial = author.first | strip | slice: 0, 1 | upcase -%}
+  {%- comment -%} Literal tokens like {(95 authors)} have no first name — skip the initial. {%- endcomment -%}
+  {%- capture author_display -%}{%- if first_initial != "" -%}{{ first_initial }}. {% endif -%}{{ author.last }}{%- endcapture -%}
   {%- if forloop.first == false %}, {% endif -%}
-  {%- if author_is_self -%}<em>{{ first_initial }}. {{ author.last }}</em>{%- else -%}{{ first_initial }}. {{ author.last }}{%- endif -%}
+  {%- if author_is_self -%}<em>{{ author_display }}</em>{%- else -%}{{ author_display }}{%- endif -%}
 {%- endfor -%}
 {%- endcapture -%}
 
