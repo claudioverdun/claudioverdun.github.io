@@ -59,6 +59,16 @@ books:
     url: https://press.princeton.edu/books/hardcover/9780691235318/the-mathematical-radio
     source: Princeton University Press, 2024
 
+  - title: "Kolmogorov's Heritage in Mathematics"
+    author: "Éric Charpentier, Annick Lesne, and Nikolaï K. Nikolski (eds.)"
+    url: https://link.springer.com/book/10.1007/978-3-540-36351-4
+    source: Springer, 2007
+
+  - title: "Kolmogorov in Perspective"
+    author: "Translated by Harold H. McFaden"
+    url: https://bookstore.ams.org/hmath-20
+    source: AMS & LMS, History of Mathematics vol. 20, 2000
+
 talks:
 youtube:
   - title: "3Blue1Brown"
