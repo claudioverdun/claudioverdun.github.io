@@ -2,7 +2,7 @@
 layout: page
 permalink: /library/
 title: library
-description: Things worth your time.
+description: Worth my time (and, with any luck, yours).
 nav: true
 nav_order: 3
 ---

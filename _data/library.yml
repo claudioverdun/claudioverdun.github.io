@@ -34,6 +34,31 @@ books:
     author: "Bernard R. Gelbaum and John M. H. Olmsted"
     source: Dover
 
+  - title: "The Visual Display of Quantitative Information"
+    author: "Edward R. Tufte"
+    url: https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/
+    source: Graphics Press, 2nd ed. 2001
+
+  - title: "The Hitchhiker's Guide to the Galaxy"
+    author: "Douglas Adams"
+    url: https://www.panmacmillan.com/authors/douglas-adams/the-hitchhikers-guide-to-the-galaxy/9781529034523
+    source: Pan Books, 1979
+
+  - title: "The Art of Doing Science and Engineering: Learning to Learn"
+    author: "Richard W. Hamming"
+    url: https://press.stripe.com/the-art-of-doing-science-and-engineering
+    source: Stripe Press, 2020 (orig. 1996)
+
+  - title: "Being Mortal: Medicine and What Matters in the End"
+    author: "Atul Gawande"
+    url: https://atulgawande.com/book/being-mortal/
+    source: Metropolitan Books, 2014
+
+  - title: "The Mathematical Radio: Inside the Magic of AM, FM, and Single-Sideband"
+    author: "Paul J. Nahin"
+    url: https://press.princeton.edu/books/hardcover/9780691235318/the-mathematical-radio
+    source: Princeton University Press, 2024
+
 talks:
 youtube:
   - title: "3Blue1Brown"
